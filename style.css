@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  background: #f0f4f8;
+  color: #1c2e4a;
+}
+
+header {
+  background: #2c7dad;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background: #145374;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  background-color: #10435e;
+}
+
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 15px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+h1, h2 {
+  color: #1c2e4a;
+}
+
+footer {
+  background: #2c7dad;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+  font-size: 0.9em;
+}
+
+button, .btn {
+  background-color: #ff8c1a;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover, .btn:hover {
+  background-color: #e07100;
+}
+
+.testimonial {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.testimonial:last-child {
+  border: none;
+}
+
+.video-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+form label {
+  font-weight: bold;
+}
