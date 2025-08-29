@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sonarfish - Pescuit Modern și Eficient</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fb;
+            color: #333;
+        }
+        header {
+            background-color: #2c5d8a;
+            padding: 15px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        #despre-noi h2 {
+            color: #2c5d8a;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #ffa500;
+            padding-bottom: 8px;
+        }
+        #despre-noi p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        iframe {
+            width: 100%;
+            max-width: 720px;
+            height: 405px; /* 16:9 aspect ratio */
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #2c5d8a;
+            color: white;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 0.9rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        @media (max-width: 768px) {
+            header, main {
+                padding: 10px 15px;
+            }
+            nav a {
+                margin-left: 15px;
+                font-size: 0.9rem;
+            }
+            iframe {
+                height: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sonarfish</h1>
+        <nav>
+            <a href="index.html">Acasă</a>
+            <a href="despre.html">Despre Noi</a>
+            <a href="testimoniale.html">Testimoniale</a>
+            <a href="video.html">Videouri</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="despre-noi">
+            <h2>Povestea Afacerii Sonarfish</h2>
+            <p>
+                Sonarfish aduce pescuitul în era digitală prin tehnologii moderne care ajută pescarii să localizeze bancurile de pești rapid și eficient. 
+                Povestea noastră este despre pasiune, inovație și dorința de a face fiecare ieșire la pescuit o experiență de succes și plăcută.
+            </p>
+            <iframe
+                src="https://www.youtube.com/embed/bKJnoQZadyk"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                title="Povestea Afacerii Sonarfish">
+            </iframe>
+        </section>
+        <!-- Alte secțiuni ale paginii principale pot fi adăugate aici -->
+    </main>
+    <footer>
+        &copy; 2025 Sonarfish. Toate drepturile rezervate.
+    </footer>
+</body>
+</html>
