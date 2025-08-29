@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sonarfish - Pescuit Modern și Eficient</title>
+<style>
+    /* Reset simplu */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #02111b, #064663);
+        color: #e0e7ff;
+        overflow-x: hidden;
+    }
+    header {
+        background-color: #022c43;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 40px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+    .logo-container img {
+        height: 60px;
+        margin-right: 15px;
+        filter: drop-shadow(0 0 5px #ffa500);
+        transition: transform 0.3s ease;
+    }
+    .logo-container img:hover {
+        transform: rotate(-5deg);
+    }
+    header h1 {
+        font-weight: 700;
+        font-size: 1.9rem;
+        color: #ffa500;
+        letter-spacing: 2px;
+        user-select: none;
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+    nav > ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        position: relative;
+    }
+    nav > ul > li {
+        position: relative;
+    }
+    nav a {
+        color: #e0e7ff;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        cursor: pointer;
+    }
+    nav a:hover, nav a:focus {
+        background-color: #ffa500;
+        color: #02111b;
+    }
+    nav ul ul {
+        display: none;
+        position: absolute;
+        top: 38px;
+        left: 0;
+        background: #022c43;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        min-width: 180px;
+        z-index: 1000;
+        flex-direction: column;
+        padding: 10px 0;
+        user-select: none;
+    }
+    nav ul li:hover > ul, nav ul li:focus-within > ul {
+        display: flex;
+    }
+    nav ul ul li {
+        padding: 0;
+    }
+    nav ul ul a {
+        padding: 10px 20px;
+        white-space: nowrap;
+    }
+    nav ul ul a:hover {
+        background-color: #ffb733;
+        color: #02111b;
+    }
+    main {
+        margin: 110px auto 60px;
+        max-width: 1150px;
+        padding: 0 25px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 45px;
+        align-items: start;
+    }
+    .intro {
+        color: #fffce6;
+        font-weight: 600;
+    }
+    .intro h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #ffb733;
+        text-shadow: 1.5px 1.5px 4px rgba(0,0,0,0.4);
+    }
+    .intro p {
+        font-size: 1.25rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        max-width: 520px;
+        text-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+    .btn-primary {
+        background-color: #ffb733;
+        color: #02111b;
+        border: none;
+        padding: 15px 40px;
+        font-weight: 700;
+        font-size: 1.2rem;
+        border-radius: 40px;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(255, 183, 51, 0.8);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        max-width: max-content;
+    }
+    .btn-primary:hover {
+        background-color: #ffcc66;
+        transform: scale(1.08);
+    }
+    .product-img {
+        max-width: 100%;
+        border-radius: 25px;
+        box-shadow: 0 12px 45px rgba(255, 183, 51, 0.6);
+        transition: transform 0.4s ease;
+        filter: drop-shadow(0 0 12px #ffa500cc);
+    }
+    .product-img:hover {
+        transform: scale(1.1);
+    }
+    .animation-container {
+        position: relative;
+        grid-column: 1 / -1;
+        height: 400px;
+        margin: 60px auto 20px;
+        max-width: 900px;
+    }
+    @keyframes fish-swim {
+        0% { transform: translateX(-60px) translateY(0) rotate(0deg); opacity: 1; }
+        40% { transform: translateX(250px) translateY(-40px) rotate(20deg); opacity: 1; }
+        60% { transform: translateX(400px) translateY(10px) rotate(-15deg); opacity: 1; }
+        100% { transform: translateX(700px) translateY(-80px) rotate(-40deg); opacity: 0; }
+    }
+    @keyframes hook-move {
+        0%, 20%, 50%, 70%, 100% { transform: translateY(0); }
+        30%, 40%, 60%, 80% { transform: translateY(10px); }
+    }
+    @keyframes boat-rock {
+        0%, 100% { transform: rotate(3deg); }
+        50% { transform: rotate(-3deg); }
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        user-select: none;
+    }
+    .fish {
+        animation: fish-swim 8s ease-in-out infinite;
+        transform-origin: center;
+    }
+    .hook {
+        animation: hook-move 2.5s ease-in-out infinite;
+        transform-origin: center;
+    }
+    .boat {
+        animation: boat-rock 5s ease-in-out infinite;
+        transform-origin: center;
+    }
+    footer {
+        background-color: #022c43;
+        color: #fff;
+        text-align: center;
+        padding: 20px 12px;
+        font-size: 0.9rem;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.7);
+    }
+    .pricing-section {
+        grid-column: 1 / -1;
+        background: rgba(255, 183, 51, 0.1);
+        border-radius: 15px;
+        padding: 30px 40px;
+        color: #ffb733;
+        box-shadow: 0 8px 20px rgba(255, 183, 51, 0.4);
+        text-align: center;
+    }
+    .pricing-section h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .pricing-section p {
+        font-size: 1.1rem;
+        color: #ffd97a;
+        font-weight: 600;
+        margin-bottom: 25px;
+        max-width: 700px;
+        line-height: 1.5;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pricing-section ul {
+        list-style: none;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0;
+        text-align: left;
+        font-size: 1.1rem;
+        color: #e0e7ff;
+    }
+    .pricing-section ul li {
+        background: #1e3c72;
+        margin: 8px 0;
+        padding: 12px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    @media(max-width: 900px) {
+        main {
+            grid-template-columns: 1fr;
+            margin: 110px auto 40px;
+            padding: 0 20px;
+            gap: 35px;
+        }
+        .animation-container {
+            height: 300px;
+        }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="logo-container" role="banner" aria-label="Logo Sonarfish">
+        <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/bbf538a3-207e-4350-a508-5dd99a19740f.png" alt="Logo Sonarfish" />
+        <h1>Sonarfish</h1>
+    </div>
+    <nav role="navigation" aria-label="Navigare site">
+        <ul>
+            <li><a href="index.html" tabindex="0">Acasă</a></li>
+            <li>
+                <a href="despre.html" tabindex="0">Despre Noi</a>
+                <ul>
+                    <li><a href="despre.html#poveste" tabindex="0">Povestea</a></li>
+                    <li><a href="despre.html#pasune" tabindex="0">Pasiunea Noastră</a></li>
+                </ul>
+            </li>
+            <li><a href="testimoniale.html" tabindex="0">Testimoniale</a></li>
+            <li><a href="video.html" tabindex="0">Videouri</a></li>
+            <li><a href="contact.html" tabindex="0">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="hero">
+        <h2>Sonarfish - Pescuit Modern, Rapid și Eficient</h2>
+        <p>Descoperă tehnologia care îți arată rapid bancurile de pești și face fiecare ieșire mai productivă și distractivă.</p>
+        <button class="btn-primary" onclick="window.location.href='contact.html';" aria-label="Închiriază sonar Sonarfish acum">Închiriază Sonarul Acum</button>
+    </div>
+    <div class="product-info" role="region" aria-labelledby="product-title">
+        <img src="sonar_product_photo.jpg" alt="Sonar Sonarfish" class="product-img" />
+        <h3 id="product-title">Tehnologie Avansată pentru Pescuit de Succes</h3>
+        <p>Sonarfish folosește cele mai noi tehnologii pentru a localiza peștii în mod eficient și simplu. Ușor de utilizat pe orice baltă sportivă.</p>
+    </div>
+    <section class="pricing-section" aria-label="Prețuri Sonarfish">
+        <h3>Prețuri</h3>
+        <p>
+            • Închiriază sonar modern pentru pescuit sportiv și bucură-te de tehnologie locală, precizie și capturi spectaculoase.<br/>
+            • Localizezi rapid bancurile de pești.<br/>
+            • Pescuit modern: eficient și distractiv.<br/>
+            • Reducere 20% la prima rezervare online.<br/>
+            • Abonamente flexibile pentru clienți fideli: 3 ieșiri + 1 gratuită.<br/>
+            • Tarife orientative:
+        </p>
+        <ul>
+            <li>100 lei / oră</li>
+            <li>350 lei / zi</li>
+        </ul>
+    </section>
+    <section class="animation-container" aria-label="Animație pește prins la cârligul sonarului">
+        <svg viewBox="0 0 800 400" aria-hidden="true" focusable="false" role="presentation">
+            <!-- Barca -->
+            <g class="boat" transform="translate(50,280)">
+                <ellipse cx="80" cy="30" rx="100" ry="35" fill="#ffa500" />
+                <rect x="45" y="-30" width="70" height="70" fill="#1e3c72" rx="15" ry="15" />
+                <rect x="75" y="-90" width="10" height="60" fill="#ffa500" />
+            </g>
+            <!-- Cârlig -->
+            <g class="hook" transform="translate(320,190)">
+                <line x1="0" y1="0" x2="0" y2="90" stroke="#ffa500" stroke-width="3" />
+                <circle cx="0" cy="90" r="12" fill="#ffbe4a" />
+                <path d="M10,80 Q20,90 10,100" stroke="#cc7a00" stroke-width="3" fill="none" />
+            </g>
+            <!-- Pește -->
+            <g class="fish" transform="translate(-60,160)">
+                <ellipse cx="80" cy="40" rx="70" ry="30" fill="#ffb733" stroke="#cc7a00" stroke-width="3" />
+                <circle cx="40" cy="40" r="10" fill="#cc7a00" />
+                <polygon points="130,40 160,20 160,60" fill="#ffa500" />
+            </g>
+        </svg>
+    </section>
+    <section class="interactive-section" aria-label="Invitație pentru a vedea povestea Sonarfish">
+        <h3>Vrei să știi mai multe?</h3>
+        <p>Urmărește povestea noastră și află cum Sonarfish te ajută să faci pescuitul mai productiv și mai distractiv.</p>
+        <button class="interactive-btn" onclick="window.location.href='despre.html#poveste';" aria-label="Vezi Povestea Sonarfish">Vezi Povestea</button>
+    </section>
+</main>
+<footer role="contentinfo">
+    &copy; 2025 Sonarfish. Toate drepturile rezervate.
+</footer>
+</body>
+</html>
